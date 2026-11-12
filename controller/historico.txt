@@ -1,0 +1,12 @@
+Repositorio: https://github.com/carlosruizgarrido/GRUPO5DAW26
+
+12/11/2026
+- Creación de las tres ramas de desarrollo desde main: modelo, vista y controlador.
+- Rama controlador: Subida de Config.php, Controller.php, index.php e historico.txt (commit "add files").
+
+Pendiente
+- Completar el trabajo en las ramas modelo, vista y controlador.
+- Fusionar cada rama en main mediante pull request cuando esté terminada.
+- Desplegar el proyecto en el hosting.
+
+URL del proyecto desplegado en el hosting: pendiente
