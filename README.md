@@ -2,8 +2,8 @@
 
 Repositorio del grupo 5 para el desarrollo y despliegue de la aplicación web de alimentos mediante arquitectura MVC.
 
-**Repositorio:** [GRUPO5DAW26 – GitHub](https://github.com/carlosruizgarrido/GRUPO5DAW26)
-**URL del proyecto desplegado en el hosting**: https://joseiescamas.alwaysdata.net/
+**Repositorio:** [GRUPO5DAW26 – GitHub](https://github.com/carlosruizgarrido/GRUPO5DAW26)  
+**URL del proyecto desplegado en el hosting:** https://joseiescamas.alwaysdata.net/
 
 ## 1. Organización del proyecto
 
