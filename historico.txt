@@ -7,6 +7,14 @@ Repositorio: https://github.com/carlosruizgarrido/GRUPO5DAW26
 19/11/2026
 - Reorganización de carpetas en las ramas: Controlador y Vista (commits "reorganized folders").
 
+Histórico de comandos:
+- git clone https://github.com/carlosruizgarrido/GRUPO5DAW26
+- ssh ...
+- 
+-
+-
+-
+
 Pendiente
 - Completar el trabajo en las ramas modelo, vista y controlador.
 - Fusionar cada rama en main mediante pull request cuando esté terminada.
