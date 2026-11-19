@@ -6,14 +6,22 @@ Repositorio: https://github.com/carlosruizgarrido/GRUPO5DAW26
 
 19/11/2026
 - Reorganización de carpetas en las ramas: Controlador y Vista (commits "reorganized folders").
+- Fusión de las ramas controlador y vista en main.
 
 Histórico de comandos:
-- git clone https://github.com/carlosruizgarrido/GRUPO5DAW26
-- ssh ...
-- 
--
--
--
+- git clone: Clonar el repositorio
+- git branch: Consultar las ramas
+- git checkout: Cambiar de rama
+- git add .: Preparar los cambios
+- git commit: Guardar los cambios
+- git push: Subir los cambios a GitHub
+- git pull: Actualizar una rama
+
+Historico para fuisionar ramas (mediante Pull Request en GitHub):
+- git checkout controlador : Cambia a la rama controlador para trabajar sobre ella
+- git add . : Añade todos los archivos modificados, nuevos o eliminados al área de preparación para incluirlos en el próximo commit
+- git commit -m "Cambios en controlador" : Guarda los cambios preparados en el historial de Git con el mensaje "Cambios en controlador"
+- git push origin controlador : Sube los commits de la rama controlador al repositorio remoto de GitHub
 
 Pendiente
 - Completar el trabajo en las ramas modelo, vista y controlador.
