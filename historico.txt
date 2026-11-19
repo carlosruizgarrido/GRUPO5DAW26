@@ -24,9 +24,4 @@ Historico para fuisionar ramas (mediante Pull Request en GitHub):
 - git commit -m "Cambios en controlador" : Guarda los cambios preparados en el historial de Git con el mensaje "Cambios en controlador"
 - git push origin controlador : Sube los commits de la rama controlador al repositorio remoto de GitHub
 
-Pendiente
-- Completar el trabajo en las ramas modelo, vista y controlador.
-- Fusionar cada rama en main mediante pull request cuando esté terminada.
-- Desplegar el proyecto en el hosting.
-
-URL del proyecto desplegado en el hosting: pendiente
+URL del proyecto desplegado en el hosting: https://joseiescamas.alwaysdata.net/
