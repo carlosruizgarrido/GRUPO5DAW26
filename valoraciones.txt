@@ -1,0 +1,40 @@
+==============================================================
+VALORACIONES DE LA EXPERIENCIA - PRACTICA PROYECTO ALIMENTOS
+GRUPO 5 DAW26
+==============================================================
+
+Repositorio: https://github.com/carlosruizgarrido/GRUPO5DAW26
+Proyecto desplegado: https://joseiescamas.alwaysdata.net/
+
+Nota: el grupo esta formado por 2 personas en lugar de 3. Por ese
+motivo las tareas del integrante 1 (repositorio, colaboradores,
+vista, front-end y este archivo de valoraciones) las hemos repartido
+entre los dos. A continuacion aparece la valoracion de cada
+integrante por separado.
+
+
+--------------------------------------------------------------
+VALORACION DE Jose Antonio (integrante 2)
+Usuario GitHub: JACR-GIT
+--------------------------------------------------------------
+
+Tareas realizadas:
+- Creacion de la base de datos TUUSUARIO_alimentosX2026 y del
+  usuario de BD en alwaysdata.
+- Creacion de la tabla alimentos desde phpMyAdmin.
+- Despliegue en el hosting mediante SSH y Git.
+- Redaccion de instalacion.txt.
+
+Nota: 10/10
+
+--------------------------------------------------------------
+VALORACION DE Carlos (integrante 3)
+Usuario GitHub: carlosruizgarrido
+--------------------------------------------------------------
+
+Tareas realizadas:
+- Modificacion de web/index.php, app/Controller.php y app/Config.php.
+- Configuracion de los datos de conexion a la base de datos.
+- Redaccion de historico.txt.
+
+Nota: 10/10
