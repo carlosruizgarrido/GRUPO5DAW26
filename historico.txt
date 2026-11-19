@@ -7,6 +7,7 @@ Repositorio: https://github.com/carlosruizgarrido/GRUPO5DAW26
 19/11/2026
 - Reorganización de carpetas en las ramas: Controlador y Vista (commits "reorganized folders").
 - Fusión de las ramas controlador y vista en main.
+- Rama controlador: Arreglado las rutas a las que apuntaban los distintos "__DIR__" (commit "update DIR").
 
 Histórico de comandos:
 - git clone: Clonar el repositorio
