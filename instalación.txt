@@ -1,0 +1,181 @@
+==============================================================
+INSTALACION Y DESPLIEGUE DEL PROYECTO ALIMENTOS
+GRUPO 5 DAW26
+==============================================================
+
+Autor: Jose Antonio Campos Rueda (integrante 2)
+Fecha: 19/11/2026
+Hosting: alwaysdata (https://admin.alwaysdata.com)
+Usuario del hosting: joseiescamas
+Repositorio GitHub: https://github.com/carlosruizgarrido/GRUPO5DAW26
+URL del proyecto desplegado: https://joseiescamas.alwaysdata.net/
+
+Nota: el grupo esta formado por 2 personas. Yo hago las tareas del
+integrante 2 y mi companero las del integrante 3. Las tareas del
+integrante 1 las hemos repartido entre los dos.
+
+
+--------------------------------------------------------------
+1. CREACION DE LA BASE DE DATOS
+--------------------------------------------------------------
+
+1.1. Entrar en el panel de alwaysdata: https://admin.alwaysdata.com
+
+1.2. Menu lateral: Bases de datos > MySQL.
+
+1.3. Pulsar "Anadir una base de datos" y escribir el nombre
+     alimentos52026. Alwaysdata le anade mi prefijo, por lo que
+     el nombre final es:
+
+         joseiescamas_alimentos52026
+
+1.4. Pestana "Usuarios" > "Anadir un usuario":
+     - Nombre de usuario: joseiesmacas
+     - Contrasena: propia para esta practica, distinta de la
+       contrasena de mi cuenta de alwaysdata.
+     - Permisos: acceso a la base joseiescamas_alimentos52026.
+
+1.5. Abrir phpMyAdmin desde el panel (seccion MySQL), entrar con el
+     usuario de la base de datos y seleccionar en el panel izquierdo
+     la base joseiescamas_alimentos52026.
+
+1.6. Pestana "SQL", pegar y ejecutar:
+
+CREATE TABLE `alimentos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  `energia` decimal(10,0) NOT NULL,
+  `proteina` decimal(10,0) NOT NULL,
+  `hidratocarbono` decimal(10,0) NOT NULL,
+  `fibra` decimal(10,0) NOT NULL,
+  `grasatotal` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+1.7. Comprobacion: en phpMyAdmin aparece la tabla "alimentos" con las
+     columnas indicadas (pestana "Estructura").
+
+1.8. Datos de conexion entregados al integrante 3 para Config.php:
+     - Host:             mysql-joseiescamas.alwaysdata.net
+     - Base de datos:    joseiescamas_alimentos52026
+     - Usuario:          joseiescamas
+     - Contrasena:       6N8hsk4Se99XGGD
+
+
+--------------------------------------------------------------
+2. ACTIVAR EL ACCESO SSH
+--------------------------------------------------------------
+
+2.1. Panel de alwaysdata: Acceso remoto > SSH.
+
+2.2. Editar mi usuario y comprobar que tiene el acceso SSH
+     habilitado (shell /bin/bash). Guardar.
+
+
+--------------------------------------------------------------
+3. CONEXION POR SSH
+--------------------------------------------------------------
+
+Desde la terminal de mi ordenador:
+
+    ssh joseiescamas@ssh-joseiescamas.alwaysdata.net
+
+- La primera vez pregunta por la huella del servidor: respondo "yes".
+- Introduzco la contrasena de mi cuenta de alwaysdata.
+- Al conectar aparece el prompt del servidor.
+
+
+--------------------------------------------------------------
+4. DESPLIEGUE CON GIT
+--------------------------------------------------------------
+
+Ya conectado por SSH:
+
+    cd ~
+    git clone https://github.com/carlosruizgarrido/GRUPO5DAW26.git alimentos
+    ls alimentos
+
+Resultado esperado: se crean las carpetas app/ y web/ dentro de
+/home/joseiescamas/alimentos/.
+
+Primera version del despliegue (la que hice al principio): clone el
+repositorio dentro de ~/www/alimentos, que es donde apuntaba el
+sitio por defecto. Funciona, pero deja app/ (con Config.php y las
+credenciales) dentro de la carpeta publica. Por eso, una vez
+funcionando, lo movi fuera de www (ver apartado 6).
+
+
+--------------------------------------------------------------
+5. PROBLEMAS ENCONTRADOS DURANTE EL DESPLIEGUE Y SOLUCIONES
+--------------------------------------------------------------
+
+5.1. Error: require_once(.../web/../app/Model.php): Failed to open
+     stream: No such file or directory (index.php, linea 6)
+
+     Causa: el archivo app/Model.php no existia en el servidor.
+     No estaba bien subido al repositorio y lo habia copiado a
+     mano al servidor despues del git clone. Despues, al borrarlo
+     con rm y hacer git pull, Git no lo restauro (cuando un archivo
+     se borra a mano, git pull no lo vuelve a crear).
+
+     Diagnostico:
+         ls -la ~/www/alimentos/app/
+         find ~ -iname "model.php"
+         git status
+         git ls-files app
+
+     Solucion: subir Model.php al repositorio desde mi ordenador
+         git add app/Model.php
+         git commit -m "Anado Model.php"
+         git push origin main
+     y en el servidor recuperar el archivo con git pull (o, si
+     aparecia como "deleted" en git status, con
+     git restore app/Model.php).
+
+     Leccion: el servidor debe quedar siempre igual que GitHub.
+     Los cambios se hacen en local, se suben con push y en el
+     servidor solo se hace git pull. No se editan ni copian
+     archivos a mano en el servidor.
+
+5.2. Error: require(.../app/../views/templates/inicio.php): Failed
+     to open stream (Controller.php, linea 12)
+
+     Causa: la ruta del require en Controller.php apuntaba a una
+     carpeta views/templates que no existe en este proyecto. Las
+     plantillas estan en app/templates.
+
+     Solucion: corregir las rutas en Controller.php para que usen
+     app/templates.
+
+5.3. Error: require(.../alimentos/apptemplates/inicio.php): Failed
+     to open stream (Controller.php, linea 12)
+
+     Causa: faltaba la barra entre app y templates. __DIR__ no
+     termina en "/", asi que el require estaba escrito como
+         __DIR__ . 'templates/inicio.php'
+
+     Solucion: anadir la barra en todos los require del controlador:
+         require __DIR__ . '/templates/inicio.php';
+
+     Nota: este archivo es del integrante 3. La correccion se hizo
+     en local, se subio a GitHub y en el servidor se hizo git pull.
+     Habia una version de Controller.php modificada en el servidor
+     (fecha 19 nov, 17:33), por lo que hubo que asegurarse de que
+     la version buena fuera la del repositorio.     
+
+
+--------------------------------------------------------------
+6. RESUMEN DE COMANDOS UTILIZADOS
+--------------------------------------------------------------
+
+    ssh joseiescamas@ssh-joseiescamas.alwaysdata.net
+    cd ~
+    git clone https://github.com/carlosruizgarrido/GRUPO5DAW26.git alimentos
+    ls -la ~/www/alimentos/app/
+    find ~ -iname "model.php"
+    git status
+    git ls-files app
+    git restore app/Model.php
+    grep -n "require\|include" app/Controller.php
+    mv ~/www/alimentos ~/alimentos
+    cd ~/alimentos && git pull

@@ -3,6 +3,7 @@ Repositorio: https://github.com/carlosruizgarrido/GRUPO5DAW26
 12/11/2026
 - Creación de las tres ramas de desarrollo desde main: modelo, vista y controlador.
 - Rama controlador: Subida de Config.php, Controller.php, index.php e historico.txt (commit "add files").
+- 
 
 19/11/2026
 - Reorganización de carpetas en las ramas: Controlador y Vista (commits "reorganized folders").
