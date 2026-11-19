@@ -107,4 +107,4 @@ El repositorio contará con tres ficheros adicionales:
 ## 7. Acceso al proyecto
 
 - **GitHub:** https://github.com/carlosruizgarrido/GRUPO5DAW26
-- **URL del proyecto desplegado:** Pendiente.
+- **URL del proyecto desplegado:** https://joseiescamas.alwaysdata.net.
